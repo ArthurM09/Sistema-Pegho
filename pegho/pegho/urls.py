@@ -30,5 +30,3 @@ urlpatterns = [
     path('api/', include(router.urls)),
     # Outras rotas
 ]
-
-
