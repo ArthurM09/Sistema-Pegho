@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista das Experiências profissionais</h1>
+    <a href="{% url 'create_work_experience' %}">Adicionar nova experiência</a>
+    <ul>
+        {% for work_experience in work_experiences %}
+            <li>
+                <a href="{% url 'work_experience_detail' work_experience.pk %}">{{ work_experience.cargo }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

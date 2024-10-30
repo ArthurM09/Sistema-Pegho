@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Detalhes do Contato</h1>
+    <p>Nome: {{ contact.name }}</p>
+    <p>E-mail: {{ contact.email }}</p>
+    <p>Telefone: {{ contact.telefone }}</p>
+    <a href="{% url 'update_contact' contact.pk %}">Editar</a>
+    <a href="{% url 'delete_contact' contact.pk %}">Deletar</a>
+    <a href="{% url 'contacts_list' %}">Voltar para a lista</a>
+</body>
+</html>

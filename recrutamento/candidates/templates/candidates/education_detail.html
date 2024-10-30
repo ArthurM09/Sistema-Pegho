@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Detalhes da Formação</h1>
+    <p>Instituição: {{ education.instituicao }}</p>
+    <p>Curso: {{ education.curso }}</p>
+    <p>Início: {{ education.inicio }}</p>
+    <p>Fim: {{ education.fim }}</p>
+    <a href="{% url 'update_education' education.pk %}">Editar</a>
+    <a href="{% url 'delete_education' education.pk %}">Deletar</a>
+    <a href="{% url 'educations_list' %}">Voltar para a lista</a>
+</body>
+</html>
