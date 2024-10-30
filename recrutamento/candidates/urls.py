@@ -1,5 +1,15 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter # type: ignore
 from . import views
+
+
+# Configuração do router para as APIs
+router = DefaultRouter()
+router.register(r'dados_pessoais', views.DadosPessoaisViewSet)
+router.register(r'contatos', views.ContatoViewSet)
+router.register(r'experiencias', views.ExperienciaViewSet)
+router.register(r'formacoes', views.FormacaoViewSet)
+
 
 urlpatterns = [
     # URLs para dados pessoais
@@ -29,4 +39,7 @@ urlpatterns = [
     path('educations/<int:pk>/', views.education_detail, name='education_detail'),
     path('educations/<int:pk>/edit/', views.update_education, name='update_education'),
     path('educations/<int:pk>/delete/', views.EducationDeleteView.as_view(), name='delete_education'),
+
+    # URLs da API REST
+    path('api/', include(router.urls)),
 ]

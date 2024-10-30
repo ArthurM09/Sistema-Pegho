@@ -4,7 +4,7 @@ from django.db import models
 class DadosPessoais(models.Model):
     nome = models.CharField(max_length=50)
     data_nascimento = models.DateField()
-    cpf = models.CharField(max_length=11)
+    cpf = models.CharField(max_length=15)
 
 class Contato(models.Model):
     dados_pessoais = models.OneToOneField(DadosPessoais, on_delete=models.CASCADE)

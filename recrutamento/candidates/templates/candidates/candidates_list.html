@@ -4,18 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+        }
+
+        .btn-edit {
+            background-color: gray;
+        }
+
+        .btn-delete {
+            background-color: gray;
+        }
+
+        .candidate-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .candidate-item {
+            padding: 10px;
+            margin: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .candidate-link {
+            font-size: 18px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .candidate-actions {
+            margin-top: 10px;
+        }
+
+        .candidate-actions .btn {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Lista de Candidatos</h2>
-    <a href="{% url 'create_candidate' %}">Adicionar Novo Candidato</a>
-    <ul>
-        {% for candidate in candidates %}
-            <li>
-                <a href="{% url 'candidate_detail' candidate.pk %}">{{ candidate.nome }} {{ candidate.cpf }}</a>
-                <a href="{% url 'update_candidate' candidate.pk %}">Editar</a>
-                <a href="{% url 'delete_candidate' candidate.pk %}">Excluir</a>
+    <div class="container">
+        <h1>Lista de Candidatos</h1>
+        <a class="btn btn-primary" href="{% url 'create_candidate' %}">Adicionar Novo Candidato</a>
+        <ul class="candidate-list">
+            {% for candidate in candidates %}
+            <li class="candidate-item">
+                <a class="candidate-link" href="{% url 'candidate_detail' candidate.pk %}">{{ candidate.nome }} {{ candidate.cpf }}</a>
+                <div class="candidate-actions">
+                    <a class="btn btn-edit" href="{% url 'update_candidate' candidate.pk %}">Editar</a>
+                    <a class="btn btn-delete" href="{% url 'delete_candidate' candidate.pk %}">Excluir</a>
+                </div>
             </li>
-        {% endfor %}
-    </ul>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from rest_framework import viewsets # type: ignore
 from .models import DadosPessoais, Contato, Experiencia, Formacao
+from .serializers import DadosPessoaisSerializer, ContatoSerializer, ExperienciaSerializer, FormacaoSerializer
 from .forms import DadosPessoaisForm, ContatoForm, ExperienciaForm, FormacaoForm
 from django.urls import reverse_lazy
 from django.views.generic.edit import DeleteView
@@ -165,3 +167,21 @@ class EducationDeleteView(DeleteView):
     model = Formacao
     template_name = 'candidates/delete_education.html'
     success_url = reverse_lazy('education_list')
+
+
+# Viewsets da API REST para cada modelo
+class DadosPessoaisViewSet(viewsets.ModelViewSet):
+    queryset = DadosPessoais.objects.all()
+    serializer_class = DadosPessoaisSerializer
+
+class ContatoViewSet(viewsets.ModelViewSet):
+    queryset = Contato.objects.all()
+    serializer_class = ContatoSerializer
+
+class ExperienciaViewSet(viewsets.ModelViewSet):
+    queryset = Experiencia.objects.all()
+    serializer_class = ExperienciaSerializer
+
+class FormacaoViewSet(viewsets.ModelViewSet):
+    queryset = Formacao.objects.all()
+    serializer_class = FormacaoSerializer

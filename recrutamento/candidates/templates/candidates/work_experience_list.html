@@ -4,16 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+        }
+
+        .work-experience-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .work-experience-item {
+            padding: 10px;
+            margin: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .work-experience-link {
+            font-size: 18px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Lista das Experiências profissionais</h1>
-    <a href="{% url 'create_work_experience' %}">Adicionar nova experiência</a>
-    <ul>
-        {% for work_experience in work_experiences %}
-            <li>
-                <a href="{% url 'work_experience_detail' work_experience.pk %}">{{ work_experience.cargo }}</a>
+    <div class="container">
+        <h1>Experiências Profissionais</h1>
+        <a class="btn btn-primary" href="{% url 'create_work_experience' %}">Adicionar Nova Experiência</a>
+        <ul class="work-experience-list">
+            {% for work_experience in work_experiences %}
+            <li class="work-experience-item">
+                <a class="work-experience-link" href="{% url 'work_experience_detail' work_experience.pk %}">{{ work_experience.cargo }}</a>
             </li>
-        {% endfor %}
-    </ul>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
