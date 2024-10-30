@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Lista de Candidatos</h2>
+    <a href="{% url 'create_candidate' %}">Adicionar Novo Candidato</a>
+    <ul>
+        {% for candidate in candidates %}
+            <li>
+                <a href="{% url 'candidate_detail' candidate.pk %}">{{ candidate.nome }} {{ candidate.cpf }}</a>
+                <a href="{% url 'update_candidate' candidate.pk %}">Editar</a>
+                <a href="{% url 'delete_candidate' candidate.pk %}">Excluir</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
